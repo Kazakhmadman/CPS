@@ -64,14 +64,15 @@ p {
     /* overflow: visible; */
 }
 
+
 /* Header */
 
-.main-header__head {
+.header {
     display: flex;
     background-color: #fff;
 }
 
-.main-header__inner {
+.header__inner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +80,7 @@ p {
 }
 
 /* Burger */
-.burger__item{
+.burger{
     background: none;
 }
 
@@ -119,12 +120,12 @@ p {
     border-radius:2px;
 }
 
-.main-header__logo {
+.header__logo {
     position: relative;
     margin-left: 17px;
 }
 
-.main-header__logo::after {
+.header__logo::after {
     height: 32px;
     width: 2px;
     content:"";
@@ -138,7 +139,7 @@ p {
     top: 10px;
 }
 
-.main-header__logo::before {
+.header__logo::before {
     display: none;
     height: 32px;
     width: 2px;
@@ -155,18 +156,18 @@ p {
 
 /* Btn */
 
-.main-header__right {
+.header__right {
     display: flex;
     margin-left: auto;
     gap: 16px;
 }
 
-.btn__item.person {
+.btn__person {
     position: relative;
     margin-right: 20px;
 }
 
-.btn__item.person::after {
+.btn__person::after {
     display: none;
     height: 32px;
     width: 2px;
@@ -191,6 +192,174 @@ p {
 
     padding: 10px 10px;
 }
+
+/* Боковая менюшка */
+
+.sideMenu {
+    font-family: 'TT Lakes', sans-serif;
+    box-sizing: border-box;
+    width: 320px;
+    position: fixed;
+    padding-bottom: 0;
+    left: 0;
+    top: 0;
+    height: 100svh;
+    z-index: 200;
+    box-shadow: 16px 0px 52px 0px #30282833;
+    background-color: white;
+    overflow-y: auto;
+    
+}
+
+@media (min-width: 360px) and (max-width: 768px) {
+    .sideMenu {
+        padding: 0 6px ;
+        width: 360px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .sideMenu {
+        padding: 12px 6px;
+        padding-bottom: 0;
+        display: block;
+        position: sticky;
+        top: 0;
+        box-shadow: none;
+        z-index: 100;
+        
+    }
+}
+
+.sideMenu__wrapper {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1B1C21;
+    font-weight: 500;
+    font-size: 16px;
+    
+}
+
+/* Шапка меню */
+.sideMenu__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 23px;
+}
+@media (min-width: 768px) and (max-width: 1440px) {
+    .sideMenu__top {
+        margin-bottom: 46px;
+    }
+}
+
+.sideMenu__logo {
+    margin-left: 16px;
+}
+.sideMenu__sideSearch {
+    margin-left: 94px;
+}
+
+@media (min-width: 360px) and (max-width: 1440px) {
+    .sideMenu__sideSearch {
+        margin-left: auto;
+    }
+}
+
+.sideNav__item {
+    list-style:none; 
+}
+
+.sideNav__link a {
+    text-decoration: none;
+}
+
+.sideMenu__nav {
+    margin-top: 0;
+    margin-left: -40px;
+    margin-bottom: 32px;
+}
+@media (min-width: 768px) and (max-width: 1440px) {
+    .sideMenu__nav {
+        margin-bottom: 268px;
+    }
+}
+
+.sideNav__link  {
+    margin-bottom: 24px;
+}
+.sideNav__link:last-child {
+    margin-bottom: 0;
+}
+
+.sideNav__link:hover::before {
+    content: "";
+    width: 4px;
+    height: 32px;
+    background-color: #41F6D7;
+    position: absolute;
+    left: 0px;
+    top: auto;
+    z-index: 1;
+    border-radius: 0 5px 5px 0;
+}
+
+a:visited {
+  color: inherit; 
+}
+a:hover {
+  color: #7E7E82;
+}
+
+/* Подвал меню */
+
+.sideFooter__btn {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.sideFooter__contactsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-left: -40px;
+    margin-bottom: 8px;
+    list-style-type: none;
+    font-family: 'TT Lakes', sans-serif;
+    font-style: normal;
+}
+.contactsList a{
+    text-decoration: none;
+    color: #1B1C21;
+}
+
+.contactsList__phone {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.sideFooter__languageList {
+    display: flex;
+    gap: 7px;
+    margin-left: -40px;
+    list-style-type: none;
+    color: #1B1C21;
+    font-weight: 500;
+}
+.sideFooter__languageList li:hover {
+    color: #7E7E82;
+}
+
+@media (min-width:768px) and (max-width:1440px) {
+    .sideFooter__languageList {
+        margin-top: 40px;
+    }
+}
+
 
 
 
@@ -222,7 +391,7 @@ p {
 
 .menu__service {
     margin-top: 24px;
-    height: 104px;
+    /* height: 104px; */ /* IMG */
 }
 
 
@@ -253,13 +422,18 @@ p {
 .nav__item {
     display: flex;
     width: 100%;
-
-    
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* для Internet Explorer и Edge */
+    scrollbar-width: none;  /* для Firefox */
 }
+
+.nav__item::-webkit-scrollbar {
+    display: none; /* для Chrome, Safari и Opera */
+}
+
 
 .nav__link {
     white-space: nowrap;
-    
     
     font-family: 'TT Lakes', sans-serif;
     font-size: 16px;
@@ -269,22 +443,15 @@ p {
     text-decoration: none;
 
     padding: 8px 16px;
-    
-    
 
-    /* transition: outline 0.3s linear; */
-
-    /* transition: transform 0.3s linear; */
+    border: 2px solid transparent;
 }
 
 .nav__link:hover {
-    
-    outline: 2px solid #B8FFEC;
+    border: 2px solid #B8FFEC;
     border-radius: 6px;
     background-color: #fff;
-    transition: outline .1s linear;
-
-    /* transform: scale(1.01); */
+    transition: border .2s linear;
 }
 
 /* Intro */
@@ -332,6 +499,7 @@ p {
 }
 
 
+
 .intro__img {
     margin-left: -20px;
     height: 100%;
@@ -350,11 +518,26 @@ p {
 /* Media */
 
 @media (min-width:769px) and (max-width:2560px) {
+    .container {
+        max-width: 1440px;
+    }
+    
+    
     /* Header */
-    .main-header {
+    .header {
         display: none;
     }
 }
+
+/* @media (min-width:1121px) {
+    .intro__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-top: 17px;
+        width: 1440px; 
+    }
+} */
+
 
 @media (min-width:769px) and (max-width:1440px) {
 
@@ -366,7 +549,7 @@ p {
     }
 
     /* Header */
-    .main-header {
+    .header {
         display: none;
     }
 
@@ -388,17 +571,14 @@ p {
         margin-left: 22px;
     }
 
-   /*  .nav__link:last-child {
-        flex-basis: 100%;
-    } */
-
-   
+  
+    
     /* Intro */
     .intro__inner {
         display: flex;
         flex-wrap: nowrap;
         margin-top: 7px;
-        width: 1119px;
+        width: 1120px; /* IMG Поменял с 1119px картинка не двигалась */
     }
 
     .intro__block {
@@ -418,7 +598,7 @@ p {
     }
 
     .intro__photo {
-        width: 100%;
+        width: 100%; /* IMG */
         margin: 0px 28px 0 36px;
     }
 
@@ -439,22 +619,22 @@ p {
 
     /* Header */
 
-    .main-header__logo {
+    .header__logo {
         margin-left: 42px;
     }
 
-    .main-header__logo::after {
+    .header__logo::after {
         display: none;
     }
 
-    .main-header__logo::before {
+    .header__logo::before {
         display: block;
         top: 10px;
         left: -20px;
     }
 
     /* Btn */
-    .btn__item.person::after {
+    .btn__person::after {
        display: block;
     }
 
@@ -515,9 +695,9 @@ p {
 @media (max-width: 575px) {
 
     /* Header */
-    .phone,
-    .message,
-    .person {
+    .btn__phone,
+    .btn__message,
+    .btn__person{
         display: none;
     }
 
